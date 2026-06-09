@@ -1,0 +1,24 @@
+name: Feature
+description: Plan a portfolio API feature
+title: "feat: "
+labels: ["feature"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What portfolio or resume routing problem does this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: approach
+    attributes:
+      label: Proposed approach
+      description: Describe the API, data model, or scoring change.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence signals
+      description: Which skills, projects, or stack accents should this highlight?
