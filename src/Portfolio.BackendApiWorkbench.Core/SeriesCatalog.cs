@@ -17,8 +17,49 @@ public sealed record SeriesRecommendation(
     int Score,
     string[] Reasons);
 
+public sealed record SeriesProfile(
+    string Variant,
+    string Label,
+    int ResumeCount,
+    string[] TargetTitles,
+    string[] StackSignals);
+
 public static class SeriesCatalog
 {
+    private static readonly SeriesProfile[] Profiles =
+    [
+        new(
+            "backend-platform",
+            "Backend and Platform",
+            151,
+            ["Backend Engineer", "API Platform Engineer", "Platform Engineer", "Cloud Software Engineer"],
+            ["Go", "Python", "Java", "C#", "SQL", "AWS", "Docker", "Kubernetes", "Terraform"]),
+        new(
+            "ai-data",
+            "AI and Data",
+            38,
+            ["AI Engineer", "Data Engineer", "Analytics Engineer", "Automation Engineer"],
+            ["Python", "SQL", "Airflow", "Databricks", "Snowflake", "LLM", "RAG"]),
+        new(
+            "fullstack-product",
+            "Full-Stack Product",
+            30,
+            ["Full-Stack Engineer", "Product Engineer", "TypeScript Engineer"],
+            ["TypeScript", "React", "Node.js", "Next.js", "SQL", "Python"]),
+        new(
+            "frontend-web",
+            "Frontend Web",
+            5,
+            ["Frontend Engineer", "Web Engineer", "React Engineer", "CMS Developer"],
+            ["TypeScript", "JavaScript", "React", "Vue.js", "HTML", "CSS", "PHP"]),
+        new(
+            "mobile",
+            "Mobile Quality",
+            19,
+            ["Mobile Engineer", "iOS Engineer", "Android Engineer", "Mobile QA Lead"],
+            ["Swift", "Kotlin", "Android", "iOS", "React Native", "Unity", "CI/CD"])
+    ];
+
     private static readonly ProjectSignal[] Projects =
     [
         new(
@@ -52,8 +93,26 @@ public static class SeriesCatalog
             ["fullstack-product", "frontend-web", "backend-platform", "ai-data"],
             ["node", "python", "go"],
             ["Hugo", "Configuration", "Content Modeling"],
+            4),
+        new(
+            "vanilla-js-lab",
+            "Vanilla JavaScript Projects Lab",
+            "frontend-browser",
+            ["frontend-web", "fullstack-product"],
+            ["node"],
+            ["JavaScript", "Browser APIs", "Accessibility"],
+            4),
+        new(
+            "time-trial-cards",
+            "Time Trial Cards",
+            "mobile-quality",
+            ["mobile", "fullstack-product"],
+            ["mobile"],
+            ["QA", "Touch Interaction", "Release Readiness"],
             4)
     ];
+
+    public static IReadOnlyList<SeriesProfile> AllProfiles() => Profiles;
 
     public static IReadOnlyList<ProjectSignal> AllProjects() => Projects;
 
